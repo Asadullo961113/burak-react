@@ -3,7 +3,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import "../../css/userPage.css";
+import "../../../css/userPage.css";
 import { Settings } from "./Settings";
 
 export default function UserPage() {
