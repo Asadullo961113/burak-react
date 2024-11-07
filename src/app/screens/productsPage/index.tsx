@@ -3,6 +3,7 @@ import {Route, Switch, useRouteMatch } from "react-router-dom";
 import ChosenProduct from "./ChosenProduct";
 import Products from "./Products"
 import "../../../css/product.css";
+import { CartItem } from "../../../lib/types/search";
 
 export default function ProductsPage() {
 

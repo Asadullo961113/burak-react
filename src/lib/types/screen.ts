@@ -4,7 +4,8 @@ import { Member } from "./member";
 
 /** REACT APP STATE **/
 export interface AppRootState {
-    homePage: HomePageState
+    homePage: HomePageState,
+    productPage: ProductPageState
 }
 
 
@@ -13,4 +14,11 @@ export interface HomePageState {
     popularDishes: Product[];
     newDishes: Product[];
     topUsers: Member[];
+}
+
+/** PRODUCTPAGE **/
+export interface ProductPageState {
+    restaurant: Member | null;
+    chosenProduct: Product | null;
+    products: Product[] 
 }

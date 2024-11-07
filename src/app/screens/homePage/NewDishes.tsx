@@ -15,7 +15,7 @@ import { setPopularDishes } from "./slice";
 import { retrieveNewDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { log } from "console";
-import ProductService from "../../sevices/ProductService";
+import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
 
