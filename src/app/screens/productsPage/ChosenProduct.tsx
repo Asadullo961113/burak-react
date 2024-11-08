@@ -20,6 +20,12 @@ import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
 import { useDispatch, useSelector } from "react-redux";
 import { serverApi } from "../../../lib/config";
+import { CartItem } from "../../../lib/types/search";
+
+
+interface ChosenProductsProps {
+  onAdd: (item: CartItem) => void
+}
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setRestaurant: (data: Member) => dispatch(setRestaurant(data)),
@@ -33,14 +39,14 @@ const restaurantRetriever = createSelector(
   retrieveRestaurant,
   (restaurant) => ({restaurant})
   )
+  
 
-export default function ChosenProduct() {
+export default function ChosenProduct(props: ChosenProductsProps) {
+  const  {onAdd} = props
   const {productId} = useParams<{productId: string}> ()
-  console.log("productId,",productId)
   const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch())
   const {chosenProduct} = useSelector(chosenProductsRetriever)
   const {restaurant} = useSelector(restaurantRetriever)
-  
   useEffect (()=> {
     const product = new ProductService()
     product
@@ -104,6 +110,17 @@ export default function ChosenProduct() {
             </div>
             <div className={"button-box"}>
               <Button variant="contained"
+              onClick={(e) => {
+                console.log("Add to cart button pressed");
+                onAdd({
+                  _id: chosenProduct._id,
+                  quantity: 1,
+                  name: chosenProduct.productName,
+                  price: chosenProduct.productPrice,
+                  image: chosenProduct.productImages[0],
+                })
+                e.stopPropagation()
+              }}
               >Add To Basket</Button>
             </div>
           </Box>

@@ -23,6 +23,11 @@ import { CartItem } from "../../../lib/types/search";
 
 
 
+interface ProductsProps {
+  onAdd: (item: CartItem) => void
+}
+
+
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setProducts: (data: Product[]) => dispatch(setProducts(data)),
@@ -32,7 +37,8 @@ const productsRetriever = createSelector(
   (products) => ({products})
   )
   
-export default function Products() {
+export default function Products(props: ProductsProps) {
+  const  {onAdd} = props
   const { setProducts } = actionDispatch(useDispatch())
   const {products} = useSelector(productsRetriever)
   const [productSearch, setProductSearch] = useState<ProductInquiry>({
@@ -196,7 +202,18 @@ const chooseDishHandler = (id: string) => {
                         sx={{ backgroundImage: `url(${imagePath})` }}
                       >
                         <div className={"product-sale"}>{sizeVolume}</div>
-                        <Button className={"shop-btn"}>
+                        <Button className={"shop-btn"}
+                          onClick={(e) => {
+                            console.log("Add to cart button pressed");
+                            onAdd({
+                              _id: product._id,
+                              quantity: 1,
+                              name: product.productName,
+                              price: product.productPrice,
+                              image: product.productImages[0],
+                            })
+                            e.stopPropagation()
+                          }}>
                           <img
                             src={"/icons/shopping-cart.svg"}
                             style={{ display: "flex" }}
