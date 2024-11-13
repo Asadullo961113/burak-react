@@ -24,6 +24,7 @@ import { Messages } from '../lib/config';
 import MemberService from './services/MemberService';
 import  {useGlobals}  from './hooks/useGlobals';
 import AuthenticationModal from './components/auth';
+
 function App() {
   const location  = useLocation()
   const {setAuthMember} = useGlobals()

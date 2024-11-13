@@ -18,6 +18,7 @@ const useBasket = () => {
           ? { ...exist, quantity: exist.quantity + 1 }
           : item
       );
+      console.log("cardUpdate: ", cartUpdate)
       setCartItems(cartUpdate);
       localStorage.setItem("cartData", JSON.stringify(cartUpdate));
     } else {

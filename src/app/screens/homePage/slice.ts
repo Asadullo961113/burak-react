@@ -1,6 +1,4 @@
 
-
-
 import { createSlice } from "@reduxjs/toolkit";
 import { HomePageState } from "../../../lib/types/screen";
 
