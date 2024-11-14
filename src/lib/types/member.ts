@@ -9,7 +9,7 @@ export interface Member {
     memberPassword?: string;
     memberAddress?: string;
     memberDesc?: string;
-    memberImage?: string;
+    memberImage?: string | File | null
     memberPoints: number;
     createdAt: Date;
     updatedAt: Date;
@@ -32,7 +32,7 @@ export interface MemberInput {
     memberPassword?: string;
     memberAddress?: string;
     memberDesc?: string;
-    memberImage?: string;
+    memberImage?: string | File | null
   }
   export interface LoginInput {
     memberNick: string;
